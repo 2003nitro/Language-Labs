@@ -1,7 +1,7 @@
 #################################################
 # Author: Adam Wilkins
 # Date Created: 7/10/2026
-# Date Updated: 7/10/2026
+# Date Updated: 7/18/2026
 # Description: Basic calculator application that performs addition, subtraction, multiplication, and division.
 #################################################
 
@@ -37,6 +37,9 @@ def Division(a, b):
     # Purpose: This function takes two numbers as input and returns their quotient.
     """
     return a / b
+
+def Exponant(a, b):
+    return pow(a, b)
 
 def StrExpressionToValue(expression):
     """
@@ -98,7 +101,7 @@ def StrExpressionToValue(expression):
     return expressionList[0]
 
 
-def ParseParenExpression(expression):
+def ParseExpression(expression):
     """
     # Author: Adam Wilkins
     # Date Created: 7/10/2026
@@ -112,10 +115,34 @@ def ParseParenExpression(expression):
             
             # Replaces the expression inside the parentheses with the result of the expression inside the parentheses.
             expression = expression[:expression.index("(")] + str(StrExpressionToValue  (parenExpression)) +expression[expression.index(")") + 1:]
+        
+        else:
+            break
+            
 
     return StrExpressionToValue(expression)
 
 
-def __main__():
-    # TODO : Implement a user interface for the calculator that allows users to input expressions and see the results.
-    pass
+
+def main():
+    # Created 7/18/2026
+    while True:
+    
+        print("1. Enter an expression to be calcualted")
+        print("2. Exit")
+        user = input("Please enter your selection: ")
+        if user == "1":
+            user = input("Enter your expression: ")
+            try:
+                print()
+                print("Answer: " + ParseExpression(user))
+                print()
+            except:
+                print("Please try again with a proper expression")
+        elif user == "2":
+            print("Exiting the calculator")
+            break
+        else:
+            print("Please enter a proper selection")
+
+main()
